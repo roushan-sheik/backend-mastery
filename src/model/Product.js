@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 // review schema
-const ReviewSchema = new mongoose.Schema(
-  {
-    user: String,
-    rating: Number,
-    body: String,
-  },
-  { timestamps: true, _id: false }
-);
+// const ReviewSchema = new mongoose.Schema(
+//   {
+//     user: String,
+//     rating: Number,
+//     body: String,
+//   },
+//   { timestamps: true, _id: false }
+// );
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -44,7 +44,10 @@ const ProductSchema = new mongoose.Schema(
       enum: ["Silver", "White", "Black"],
       default: "Silver",
     },
-    review: [ReviewSchema],
+    review: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Review",
+    },
   },
   { timestamps: true }
 );

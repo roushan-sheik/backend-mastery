@@ -1,12 +1,12 @@
 import dotenv from "dotenv";
 import express from "express";
 import { connectDB } from "./DB/connectDB.js";
-import Product from "./model/Product.js";
+import Review from "./model/Review.js";
 dotenv.config();
 const app = express();
 // reviews
 const review1 = {
-  name: "Arifa Moni",
+  user: "Arifa Moni",
   rating: 5,
   body: "This is a good product I have ever bought!",
 };
@@ -26,8 +26,20 @@ async function main() {
   //* await Product.deleteMany({});
 
   try {
-    const product = new Product(obj);
-    await product.save();
+    // NOTE - create review  and Product
+    const review = new Review(review1);
+    console.log(review);
+    review.save();
+
+    // const product = new Product(obj);
+    // await product.save();
+    // NOTE - Update review
+    // const product = await Product.findById("65f40d45c1857b89dd0b1d25");
+    // const review = product.review.find((singleReview) =>
+    //   console.log("Single review", singleReview)
+    // );
+    // console.log("Review", review);
+    // console.log(" Review updated");
     // console.log("New product is created id-", product.id);
     //NOTE - find the product
     //NOTE - Best updated way
