@@ -9,9 +9,20 @@ const ProductSchema = new mongoose.Schema(
       maxLength: [20, "Name is too long"],
       validate: {
         validator: () => {
+          // write your validation logic here
           return true;
         },
         message: "Custom validation failed",
+      },
+    },
+    price: {
+      type: String,
+      required: true,
+      validate: {
+        validator: (v) => {
+          return v > 0;
+        },
+        message: "Price cannot be zero or negative.",
       },
     },
   },
