@@ -5,7 +5,7 @@ import Product from "./model/Product.js";
 dotenv.config();
 const app = express();
 let obj = {
-  name: "arifa",
+  name: "arifa moni",
 };
 async function main() {
   // connect to the database
