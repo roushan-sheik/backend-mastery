@@ -7,6 +7,7 @@ const app = express();
 let obj = {
   name: "MackBok Air",
   price: "1020",
+  tags: "mackbook",
 };
 async function main() {
   // connect to the database

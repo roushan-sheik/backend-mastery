@@ -25,6 +25,14 @@ const ProductSchema = new mongoose.Schema(
         message: "Price cannot be zero or negative.",
       },
     },
+    tags: {
+      type: [String],
+    },
+    color: {
+      type: String,
+      enum: ["Silver", "White", "Black"],
+      default: "Silver",
+    },
   },
   { timestamps: true }
 );
