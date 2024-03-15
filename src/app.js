@@ -14,13 +14,15 @@ async function main() {
   // connect to the database
   connectDB();
   // const product = new Product(obj);
-  //NOTE - find the product
-  const product = await Product.findById("65f3bb9d897cd470dc746342");
-  console.log(product);
-  console.log("Id ", product.id);
+
   try {
     // await product.save();
-    console.log("New product is created id-", product.id);
+    // console.log( "New product is created id-", product.id )
+    //NOTE - find the product
+    const product = await Product.findById("65f3bb9d897cd470dc746342");
+    console.log(product);
+    console.log("Product Id ", product.id);
+    console.log("Tag count:", product.tagCount);
   } catch (error) {
     console.log(error.message);
   }

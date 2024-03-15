@@ -36,5 +36,9 @@ const ProductSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+// Make a virtual property
+ProductSchema.virtual("tagCount").get(function () {
+  return this.tags.length;
+});
 const Product = mongoose.model("Product", ProductSchema);
 export default Product;
