@@ -4,33 +4,53 @@ import { connectDB } from "./DB/connectDB.js";
 import Product from "./model/Product.js";
 dotenv.config();
 const app = express();
+// reviews
+const review1 = {
+  name: "Arifa Moni",
+  rating: 5,
+  body: "This is a good product I have ever bought!",
+};
 let obj = {
   name: "Samsung A20",
   price: "2000",
   tags: ["apple", "mackbook", "silicon", "air"],
   color: "Black",
+  review: review1,
 };
+
 // 65f3bb9d897cd470dc746342
 async function main() {
   // connect to the database
   connectDB();
-  const product = new Product(obj);
+
+  //* await Product.deleteMany({});
 
   try {
-    // await product.save();
+    const product = new Product(obj);
+    await product.save();
     // console.log("New product is created id-", product.id);
     //NOTE - find the product
+    //NOTE - Best updated way
 
-    const product = await Product.findById("65f3e0188bcc070be7a664b5");
+    // product.name = "Arifa Surface";
+    // if (product.price > 1000) {
+    //   product.price = 900;
+    // }
+    // review
+    // product.review.push(review1);
+    // save the product
+    // product.save();
+
     console.log(product);
-    const updatedProduct = await Product.findByIdAndUpdate(
-      "65f3e0188bcc070be7a664b5",
-      { name: "Samsung A20 Pro", price: "10000" },
-      {
-        new: true,
-      }
-    );
-    console.log(updatedProduct);
+    //NOTE -Not  Best Practices updated way
+    // const updatedProduct = await Product.findByIdAndUpdate(
+    //   "65f3e0188bcc070be7a664b5",
+    //   { name: "Samsung A20 Pro", price: "10000" },
+    //   {
+    //     new: true,
+    //   }
+    // );
+    // console.log(updatedProduct);
 
     // console.log("Tag count:", product.tagCount);
     // get product by methods
