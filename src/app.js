@@ -21,8 +21,11 @@ async function main() {
     //NOTE - find the product
     const product = await Product.findById("65f3bb9d897cd470dc746342");
     console.log(product);
-    console.log("Product Id ", product.id);
+
     console.log("Tag count:", product.tagCount);
+    // get product by methods
+    const sameProducts = await product.findWitheSameName();
+    console.log(sameProducts);
   } catch (error) {
     console.log(error.message);
   }

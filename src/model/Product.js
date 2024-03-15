@@ -40,5 +40,9 @@ const ProductSchema = new mongoose.Schema(
 ProductSchema.virtual("tagCount").get(function () {
   return this.tags.length;
 });
+// we con create a method to get data
+ProductSchema.methods.findWitheSameName = function (cb) {
+  return mongoose.model("Product").find({ name: this.name }, cb);
+};
 const Product = mongoose.model("Product", ProductSchema);
 export default Product;
