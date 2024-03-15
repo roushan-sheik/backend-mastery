@@ -7,14 +7,19 @@ const app = express();
 let obj = {
   name: "MackBok Air",
   price: "1020",
-  tags: "mackbook",
+  tags: ["apple", "mackbook", "silicon", "air"],
 };
+// 65f3bb9d897cd470dc746342
 async function main() {
   // connect to the database
   connectDB();
-  const product = new Product(obj);
+  // const product = new Product(obj);
+  //NOTE - find the product
+  const product = await Product.findById("65f3bb9d897cd470dc746342");
+  console.log(product);
+  console.log("Id ", product.id);
   try {
-    await product.save();
+    // await product.save();
     console.log("New product is created id-", product.id);
   } catch (error) {
     console.log(error.message);
