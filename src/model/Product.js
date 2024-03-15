@@ -44,10 +44,12 @@ const ProductSchema = new mongoose.Schema(
       enum: ["Silver", "White", "Black"],
       default: "Silver",
     },
-    review: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Review",
-    },
+    review: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Review",
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import { connectDB } from "./DB/connectDB.js";
+import Product from "./model/Product.js";
 import Review from "./model/Review.js";
 dotenv.config();
 const app = express();
@@ -9,13 +10,6 @@ const review1 = {
   user: "Arifa Moni",
   rating: 5,
   body: "This is a good product I have ever bought!",
-};
-let obj = {
-  name: "Samsung A20",
-  price: "2000",
-  tags: ["apple", "mackbook", "silicon", "air"],
-  color: "Black",
-  review: review1,
 };
 
 // 65f3bb9d897cd470dc746342
@@ -29,10 +23,20 @@ async function main() {
     // NOTE - create review  and Product
     const review = new Review(review1);
     console.log(review);
-    review.save();
+    // review.save();
+    let obj = {
+      name: "OnePlus Pro Max",
+      price: "1000",
+      tags: ["onePlus", "mackbook", "silicon", "air"],
+      color: "Black",
+      review: [review.id],
+    };
 
-    // const product = new Product(obj);
+    const product = new Product(obj);
+    console.log(product);
+
     // await product.save();
+    console.log("Product created");
     // NOTE - Update review
     // const product = await Product.findById("65f40d45c1857b89dd0b1d25");
     // const review = product.review.find((singleReview) =>
